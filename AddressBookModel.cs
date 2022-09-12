@@ -18,6 +18,19 @@ namespace AddressBookLinq
         [DataType(DataType.PhoneNumber)]
         public string? PhoneNumber { get; set; }
         public int? Zip { get; set; }
-
+        public AddressBookModel(string? firstName, string? lastName, string? address, string? city, string? state, string? email, string? phoneNumber, int? zip)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
+            City = city;
+            State = state;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Zip = zip;
+        }
+        public AddressBookModel()
+        {
+        }
     }
 }
