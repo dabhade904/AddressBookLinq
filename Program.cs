@@ -7,7 +7,7 @@ namespace AddressBookLinq
         {           
             while (true)
             {
-                Console.WriteLine("Enter your choice: \n 1. Create Person Details \n 2. Display Person Data \n 3. Update Data \n 0 .Exit");
+                Console.WriteLine("Enter your choice: \n 1. Create Person Details \n 2. Display Person Data \n 3. Update Data \n 4. Remove Data \n 0 .Exit");
                 int input = Convert.ToInt32(Console.ReadLine());
                 switch (input)
                 {
@@ -19,6 +19,9 @@ namespace AddressBookLinq
                         break;
                     case 3:
                         AddressBookHandler.UpdateFieldUsingName();
+                        break;
+                    case 4:
+                        AddressBookHandler.RemoveList();
                         break;
                     case 0:
                         Environment.Exit(0);
