@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -21,22 +22,22 @@ namespace AddressBookLinq
                 while (anotheruser)
                 {
                     var addressBookData = new AddressBookModel();
-                     Console.WriteLine("Enter first name");
-                     addressBookData.FirstName = Console.ReadLine();
-                     Console.WriteLine("Enter Last name");
-                     addressBookData.LastName = Console.ReadLine();
-                     Console.WriteLine("Enter Address");
-                     addressBookData.Address = Console.ReadLine();
-                     Console.WriteLine("Enter City");
-                     addressBookData.City = Console.ReadLine();
-                     Console.WriteLine("Enter State");
-                     addressBookData.State = Console.ReadLine();
-                     Console.WriteLine("Enter Email");
-                     addressBookData.Email = Console.ReadLine();
-                     Console.WriteLine("Enter  Zip Code");
-                     addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
-                     Console.WriteLine("Enter Phone Number ");
-                     addressBookData.PhoneNumber = Console.ReadLine();               
+                        Console.WriteLine("Enter first name");
+                        addressBookData.FirstName = Console.ReadLine();
+                        Console.WriteLine("Enter Last name");
+                        addressBookData.LastName = Console.ReadLine();
+                        Console.WriteLine("Enter Address");
+                        addressBookData.Address = Console.ReadLine();
+                        Console.WriteLine("Enter City");
+                        addressBookData.City = Console.ReadLine();
+                        Console.WriteLine("Enter State");
+                        addressBookData.State = Console.ReadLine();
+                        Console.WriteLine("Enter Email");
+                        addressBookData.Email = Console.ReadLine();
+                        Console.WriteLine("Enter  Zip Code");
+                        addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Phone Number ");
+                        addressBookData.PhoneNumber = Console.ReadLine();                    
                     addressList.Add(addressBookData);
                     do
                     {
@@ -100,7 +101,22 @@ namespace AddressBookLinq
             {
                 Console.WriteLine("List is Empty");
             }
+        }
 
+        public static void RetriveDataUsingCityAndState()
+        {
+            Console.WriteLine("Enter City ");
+            string city = Console.ReadLine();
+            Console.WriteLine("Enter State ");
+            string state = Console.ReadLine();
+            var selectedRecords = from data in addressList
+                                  where (data.City==city || data.State==state)
+                                  select data;
+            Console.WriteLine("Date Fetched");
+            foreach (AddressBookModel address in selectedRecords)
+            {
+                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip}");
+            }
         }
     }
 }
