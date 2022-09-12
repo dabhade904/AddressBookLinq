@@ -8,7 +8,20 @@ namespace AddressBookLinq
         {           
             while (true)
             {
-               
+                Console.WriteLine("Enter your choice: \n 1. Create Person Details \n 2. Display Person Data \n 0 .Exit");
+                int input = Convert.ToInt32(Console.ReadLine());
+                switch (input)
+                {
+                    case 1:
+                        AddressBookHandler.ListOfRecords();
+                        break;
+                    case 2:
+                        AddressBookHandler.Display();
+                        break;       
+                    case 0:
+                        Environment.Exit(0);
+                        break;
+                }
             }
         }
     }
