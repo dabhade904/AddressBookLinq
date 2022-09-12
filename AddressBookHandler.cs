@@ -91,10 +91,10 @@ namespace AddressBookLinq
         {
             if (addressList.Count != 0)
             {
-                Console.WriteLine("Enter first Name ");
+                Console.WriteLine("Enter First Name ");
                 string firstName = Console.ReadLine();
                 var removeData = addressList.RemoveAll((x) => x.FirstName == firstName);
-                Console.WriteLine("Data removed : ", removeData);
+                Console.WriteLine("Data removed ");           
             }
             else
             {
