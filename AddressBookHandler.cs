@@ -18,7 +18,6 @@ namespace AddressBookLinq
             bool anotheruser = true;
             try
             {
-                var addressBook = Console.ReadLine();
                 while (anotheruser)
                 {
                     var addressBookData = new AddressBookModel();
@@ -37,7 +36,7 @@ namespace AddressBookLinq
                      Console.WriteLine("Enter  Zip Code");
                      addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
                      Console.WriteLine("Enter Phone Number ");
-                     addressBookData.PhoneNumber = Console.ReadLine();
+                     addressBookData.PhoneNumber = Console.ReadLine();               
                     addressList.Add(addressBookData);
                     do
                     {
@@ -67,7 +66,7 @@ namespace AddressBookLinq
             {
                 Console.WriteLine("Enter first Name ");
                 string firstName = Console.ReadLine();
-                if (updateData.FirstName==firstName)
+                if (updateData.FirstName == firstName)
                 {
                     Console.WriteLine("Enter first name");
                     updateData.FirstName = Console.ReadLine();
@@ -87,6 +86,21 @@ namespace AddressBookLinq
                     updateData.Zip = 322344;
                 }
             }
+        }
+        public static void RemoveList()
+        {
+            if (addressList.Count != 0)
+            {
+                Console.WriteLine("Enter First Name ");
+                string firstName = Console.ReadLine();
+                var removeData = addressList.RemoveAll((x) => x.FirstName == firstName);
+                Console.WriteLine("Data removed ");
+            }
+            else
+            {
+                Console.WriteLine("List is Empty");
+            }
+
         }
     }
 }
