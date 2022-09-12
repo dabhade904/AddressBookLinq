@@ -22,7 +22,7 @@ namespace AddressBookLinq
                 while (anotheruser)
                 {
                     var addressBookData = new AddressBookModel();
-                        Console.WriteLine("Enter first name");
+                    /*    Console.WriteLine("Enter first name");
                         addressBookData.FirstName = Console.ReadLine();
                         Console.WriteLine("Enter Last name");
                         addressBookData.LastName = Console.ReadLine();
@@ -37,7 +37,10 @@ namespace AddressBookLinq
                         Console.WriteLine("Enter  Zip Code");
                         addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter Phone Number ");
-                        addressBookData.PhoneNumber = Console.ReadLine();                    
+                        addressBookData.PhoneNumber = Console.ReadLine(); */
+                    addressList.Add(new AddressBookModel("harsh", "dabhade", "shekta", "paithan", "mh", "dabhade904@gmail.com", "8888948943", 431105));
+                    addressList.Add(new AddressBookModel("sachin", "dabhade", "shekta", "shekta", "mh", "dabhade904@gmail.com", "8888948943", 431105));
+                    addressList.Add(new AddressBookModel("kamlesh", "dabhade", "shekta", "bidkeen", "mh", "dabhade904@gmail.com", "8888948943", 431105));
                     addressList.Add(addressBookData);
                     do
                     {
@@ -60,13 +63,12 @@ namespace AddressBookLinq
                 Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip}");
             }
         }
-
         public static void UpdateFieldUsingName()
         {
             foreach (var updateData in addressList)
             {
                 Console.WriteLine("Enter first Name ");
-                string firstName = Console.ReadLine();
+                string? firstName = Console.ReadLine();
                 if (updateData.FirstName == firstName)
                 {
                     Console.WriteLine("Enter first name");
@@ -93,7 +95,7 @@ namespace AddressBookLinq
             if (addressList.Count != 0)
             {
                 Console.WriteLine("Enter First Name ");
-                string firstName = Console.ReadLine();
+                string? firstName = Console.ReadLine();
                 var removeData = addressList.RemoveAll((x) => x.FirstName == firstName);
                 Console.WriteLine("Data removed ");
             }
@@ -102,13 +104,12 @@ namespace AddressBookLinq
                 Console.WriteLine("List is Empty");
             }
         }
-
         public static void RetriveDataUsingCityAndState()
         {
             Console.WriteLine("Enter City ");
-            string city = Console.ReadLine();
+            string? city = Console.ReadLine();
             Console.WriteLine("Enter State ");
-            string state = Console.ReadLine();
+            string? state = Console.ReadLine();
             var selectedRecords = from data in addressList
                                   where (data.City==city || data.State==state)
                                   select data;
@@ -116,6 +117,17 @@ namespace AddressBookLinq
             foreach (AddressBookModel address in selectedRecords)
             {
                 Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip}");
+            }
+        }
+
+        public static void GetCountOfRecords()
+        {
+            var recordData = addressList
+                .GroupBy(user => user.City )
+                .Select(user => new { data = user.Key, Count = user.Count() });
+            foreach (var reocrdCount in recordData)
+            {
+                Console.WriteLine(reocrdCount.data + " ------- " + recordData.Count());
             }
         }
     }

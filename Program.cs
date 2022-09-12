@@ -26,6 +26,9 @@ namespace AddressBookLinq
                     case 5:
                         AddressBookHandler.RetriveDataUsingCityAndState();
                         break;
+                    case 6:
+                        AddressBookHandler.GetCountOfRecords();
+                        break;
                     case 0:
                         Environment.Exit(0);
                         break;
