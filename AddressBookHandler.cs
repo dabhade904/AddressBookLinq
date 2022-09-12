@@ -22,25 +22,22 @@ namespace AddressBookLinq
                 while (anotheruser)
                 {
                     var addressBookData = new AddressBookModel();
-                    /*    Console.WriteLine("Enter first name");
-                        addressBookData.FirstName = Console.ReadLine();
-                        Console.WriteLine("Enter Last name");
-                        addressBookData.LastName = Console.ReadLine();
-                        Console.WriteLine("Enter Address");
-                        addressBookData.Address = Console.ReadLine();
-                        Console.WriteLine("Enter City");
-                        addressBookData.City = Console.ReadLine();
-                        Console.WriteLine("Enter State");
-                        addressBookData.State = Console.ReadLine();
-                        Console.WriteLine("Enter Email");
-                        addressBookData.Email = Console.ReadLine();
-                        Console.WriteLine("Enter  Zip Code");
-                        addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Enter Phone Number ");
-                        addressBookData.PhoneNumber = Console.ReadLine(); */
-                    addressList.Add(new AddressBookModel("harsh", "dabhade", "shekta", "paithan", "mh", "dabhade904@gmail.com", "8888948943", 431105));
-                    addressList.Add(new AddressBookModel("sachin", "dabhade", "shekta", "shekta", "mh", "dabhade904@gmail.com", "8888948943", 431105));
-                    addressList.Add(new AddressBookModel("kamlesh", "dabhade", "shekta", "bidkeen", "mh", "dabhade904@gmail.com", "8888948943", 431105));
+                    Console.WriteLine("Enter first name");
+                    addressBookData.FirstName = Console.ReadLine();
+                    Console.WriteLine("Enter Last name");
+                    addressBookData.LastName = Console.ReadLine();
+                    Console.WriteLine("Enter Address");
+                    addressBookData.Address = Console.ReadLine();
+                    Console.WriteLine("Enter City");
+                    addressBookData.City = Console.ReadLine();
+                    Console.WriteLine("Enter State");
+                    addressBookData.State = Console.ReadLine();
+                    Console.WriteLine("Enter Email");
+                    addressBookData.Email = Console.ReadLine();
+                    Console.WriteLine("Enter  Zip Code");
+                    addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Phone Number ");
+                    addressBookData.PhoneNumber = Console.ReadLine();
                     addressList.Add(addressBookData);
                     do
                     {
@@ -111,7 +108,7 @@ namespace AddressBookLinq
             Console.WriteLine("Enter State ");
             string? state = Console.ReadLine();
             var selectedRecords = from data in addressList
-                                  where (data.City==city || data.State==state)
+                                  where (data.City == city || data.State == state)
                                   select data;
             Console.WriteLine("Date Fetched");
             foreach (AddressBookModel address in selectedRecords)
@@ -123,11 +120,27 @@ namespace AddressBookLinq
         public static void GetCountOfRecords()
         {
             var recordData = addressList
-                .GroupBy(user => user.City )
+                .GroupBy(user => user.City)
                 .Select(user => new { data = user.Key, Count = user.Count() });
             foreach (var reocrdCount in recordData)
             {
                 Console.WriteLine(reocrdCount.data + " ------- " + recordData.Count());
+            }
+        }
+
+        public static void SortingByPersonName()
+        {
+            if (addressList.Count > 0)
+            {
+                foreach (var data in addressList.OrderBy(x => x.FirstName).ToList())
+                {
+                    if (addressList.Contains(data))
+                    {
+                        Console.WriteLine("The Contact Details of " + data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                    }
+                    else
+                        Console.WriteLine("contact does not exists");
+                }
             }
         }
     }
