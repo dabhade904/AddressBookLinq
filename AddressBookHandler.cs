@@ -38,6 +38,8 @@ namespace AddressBookLinq
                     addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Enter Phone Number ");
                     addressBookData.PhoneNumber = Console.ReadLine();
+                    Console.WriteLine("Enter type of Person Friend/Family/Profession");
+                    addressBookData.TypeOfPerson = Console.ReadLine();
                     addressList.Add(addressBookData);
                     do
                     {
@@ -57,7 +59,7 @@ namespace AddressBookLinq
         {
             foreach (AddressBookModel address in addressList)
             {
-                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip}");
+                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip},Type Of Person{address.TypeOfPerson}");
             }
         }
         public static void UpdateFieldUsingName()
@@ -83,7 +85,9 @@ namespace AddressBookLinq
                     Console.WriteLine("Enter City name");
                     updateData.City = Console.ReadLine();
                     Console.WriteLine("Enter Zip name");
-                    updateData.Zip = 322344;
+                    updateData.Zip = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter type of Person Friend/Family/Profession");
+                    updateData.TypeOfPerson = Console.ReadLine();
                 }
             }
         }
@@ -113,7 +117,7 @@ namespace AddressBookLinq
             Console.WriteLine("Date Fetched");
             foreach (AddressBookModel address in selectedRecords)
             {
-                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip}");
+                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip},Type Of Person{address.TypeOfPerson}");
             }
         }
 
@@ -132,11 +136,11 @@ namespace AddressBookLinq
         {
             if (addressList.Count > 0)
             {
-                foreach (var data in addressList.OrderBy(x => x.FirstName).ToList())
+                foreach (var address in addressList.OrderBy(x => x.FirstName).ToList())
                 {
-                    if (addressList.Contains(data))
+                    if (addressList.Contains(address))
                     {
-                        Console.WriteLine("The Contact Details of " + data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email);
+                        Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip},Type Of Person{address.TypeOfPerson}");
                     }
                     else
                         Console.WriteLine("contact does not exists");
