@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -145,6 +146,17 @@ namespace AddressBookLinq
                     else
                         Console.WriteLine("contact does not exists");
                 }
+            }
+        }
+
+        public static void GetCountByTypeOfpersons()
+        {
+            Console.WriteLine("Enter type of person");
+            string? typeOfPerson = Console.ReadLine();
+            var result = addressList.Count(str => str.TypeOfPerson== typeOfPerson).ToString();
+            foreach (var reocrdCount in result)
+            {
+                Console.WriteLine(typeOfPerson+ " person count are " +reocrdCount);
             }
         }
     }
