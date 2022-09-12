@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,27 +18,26 @@ namespace AddressBookLinq
             bool anotheruser = true;
             try
             {
-                Console.WriteLine("Enter the country you want to add address");
                 var addressBook = Console.ReadLine();
                 while (anotheruser)
                 {
                     var addressBookData = new AddressBookModel();
-                    Console.WriteLine("Enter first name");
-                    addressBookData.FirstName = Console.ReadLine();
-                    Console.WriteLine("Enter Last name");
-                    addressBookData.LastName = Console.ReadLine();
-                    Console.WriteLine("Enter Address");
-                    addressBookData.Address = Console.ReadLine();
-                    Console.WriteLine("Enter City");
-                    addressBookData.City = Console.ReadLine();
-                    Console.WriteLine("Enter State");
-                    addressBookData.State = Console.ReadLine();
-                    Console.WriteLine("Enter Email");
-                    addressBookData.Email = Console.ReadLine();
-                    Console.WriteLine("Enter  Zip Code");
-                    addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Enter Phone Number ");
-                    addressBookData.PhoneNumber = Console.ReadLine();
+                     Console.WriteLine("Enter first name");
+                     addressBookData.FirstName = Console.ReadLine();
+                     Console.WriteLine("Enter Last name");
+                     addressBookData.LastName = Console.ReadLine();
+                     Console.WriteLine("Enter Address");
+                     addressBookData.Address = Console.ReadLine();
+                     Console.WriteLine("Enter City");
+                     addressBookData.City = Console.ReadLine();
+                     Console.WriteLine("Enter State");
+                     addressBookData.State = Console.ReadLine();
+                     Console.WriteLine("Enter Email");
+                     addressBookData.Email = Console.ReadLine();
+                     Console.WriteLine("Enter  Zip Code");
+                     addressBookData.Zip = Convert.ToInt32(Console.ReadLine());
+                     Console.WriteLine("Enter Phone Number ");
+                     addressBookData.PhoneNumber = Console.ReadLine();
                     addressList.Add(addressBookData);
                     do
                     {
@@ -55,13 +55,38 @@ namespace AddressBookLinq
         }
         public static void Display()
         {
-
             foreach (AddressBookModel address in addressList)
             {
-                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City},Address: {address.Address} , City{address.City},State {address.State}");
+                Console.WriteLine($"Name: {address.FirstName + " " + address.LastName}, Email ID: {address.Email}, Phone Number: {address.PhoneNumber}, City: {address.City}, Address: {address.Address} , State {address.State}, Zip {address.Zip}");
             }
         }
 
-
+        public static void UpdateFieldUsingName()
+        {
+            foreach (var updateData in addressList)
+            {
+                Console.WriteLine("Enter first Name ");
+                string firstName = Console.ReadLine();
+                if (updateData.FirstName==firstName)
+                {
+                    Console.WriteLine("Enter first name");
+                    updateData.FirstName = Console.ReadLine();
+                    Console.WriteLine("Enter last name");
+                    updateData.LastName = Console.ReadLine();
+                    Console.WriteLine("Enter Email Id name");
+                    updateData.Email = Console.ReadLine();
+                    Console.WriteLine("Enter Phone Number name");
+                    updateData.PhoneNumber = Console.ReadLine();
+                    Console.WriteLine("Enter State name");
+                    updateData.State = Console.ReadLine();
+                    Console.WriteLine("Enter Address name");
+                    updateData.Address = Console.ReadLine();
+                    Console.WriteLine("Enter City name");
+                    updateData.City = Console.ReadLine();
+                    Console.WriteLine("Enter Zip name");
+                    updateData.Zip = 322344;
+                }
+            }
+        }
     }
 }
